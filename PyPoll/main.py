@@ -35,19 +35,17 @@ with open(election_csv, 'r') as csvfile:
                 candidates_list.append(candidate_name)
             
                 total_candidate_votes[candidate_name] = 0   
-
+        
         
     for candidate_name in candidates_list:
          
         #calculate total votes for each candidate
-
+        
         total_candidate_votes[candidate_name] = total_candidate_votes[candidate_name] + 1
 
         #calculate percentage of votes for each candidate
         
-        percentage_votes = round(((total_candidate_votes/ total_votes) * 100), 3)
-
-        
+        percentage_votes = round(((total_candidate_votes[candidate_name]/ total_votes) * 100), 3)
 
         #find winner of popular vote
         if total_candidate_votes > winner_count:
@@ -72,7 +70,7 @@ f"\n-------------------------\n"
 print(results)
 
 #export text file with results
-#results_text = os.path.join("results_text.txt")
+results_text = os.path.join('Analysis/results_text_file.txt')
 
-#with open(results_text) as results_text_file:
-    #results_text_file.write(results)
+with open(results_text, 'w') as budget_text_file:
+    budget_text_file.write(results)
